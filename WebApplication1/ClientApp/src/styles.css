@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+/*@import "~@angular/material/prebuilt-themes/pink-bluegrey.css";*/
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+body {
+    margin: 0;
+}
+
+.flex-spacer {
+    /* This fills the remaining space, by using flexbox. 
+   Every toolbar row uses a flexbox row layout. */
+flex: 1 1 auto;
+}
+
+.mat-toolbar {
+    background-color: #711984;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+.mat-toolbar h1 {
+    color: #fff;
+}
+.mat-toolbar a {
+    margin-left:10px;
+}
+
+.mat-row:nth-child(even) {
+    background-color: #fcf0fc;
+}
+
+.mat-row:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.mat-icon-button{
+    color:#711984;
+} 
+
+.mat-button{
+    background-color:#711984;
+    color: whitesmoke;
+} 

@@ -1,0 +1,47 @@
+<div>
+  <div *ngIf="isLoadingResults" class="wtw-loading-shade">
+    <p>Loading...</p>
+  </div>
+  <div>
+    <table mat-table [dataSource]="policies" class="wtw-table-container">
+      <!-- Policy Number Column -->
+      <ng-container matColumnDef="policyNumber">
+        <th mat-header-cell *matHeaderCellDef>Policy Number</th>
+        <td mat-cell *matCellDef="let row">{{ row.policyNumber }}</td>
+      </ng-container>
+        <!-- ISBN Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let row">{{ row.policyHolder.name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef>Age</th>
+        <td mat-cell *matCellDef="let row">{{ row.policyHolder.age }}</td>
+      </ng-container>
+      <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef>Gender</th>
+        <td mat-cell *matCellDef="let row">{{ gender[row.policyHolder.gender] }}</td>
+      </ng-container>
+      <!-- actions -->
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>
+          <button mat-icon-button matTooltip="Add Policy" [routerLink]="['/policies/new']">
+            <mat-icon aria-label="Add new Policy">add_box</mat-icon>
+          </button>
+        </mat-header-cell>        
+        <mat-cell *matCellDef="let row; let i=index;">
+          <button mat-icon-button matTooltip="Change Policy" [routerLink]="['/policies/', row.policyNumber]">
+            <mat-icon aria-label="Edit">edit</mat-icon>
+          </button>
+  
+          <button mat-icon-button matTooltip="Delete Policy" (click)="delete(i, row.policyNumber)">
+            <mat-icon aria-label="Delete">delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>    
+    </table>
+  </div>
+</div>

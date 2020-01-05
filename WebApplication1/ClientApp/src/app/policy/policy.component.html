@@ -1,0 +1,45 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+    <mat-card class="policy-card">
+      <form [formGroup]="policyForm" (ngSubmit)="submit(policyForm.value)" fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+        <mat-card-content>
+          <div>
+            <mat-form-field>
+              <input  [readonly]="action === 'update'" matInput type="text" placeholder="Policy Number" formControlName="policyNumber" id="policyNumber">
+              <mat-hint align="end">Enter policy number.</mat-hint>
+              <mat-error *ngIf="hasError('policyNumber', 'required')">Policy number is required</mat-error>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput type="text" placeholder="Holder Name" formControlName="holderName" id="holderName">
+              <mat-hint align="end">Enter policy holder's name.</mat-hint>
+              <mat-error *ngIf="hasError('holderName', 'required')">Policy Holder's Name is required</mat-error>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput type="text" placeholder="Age" formControlName="holderAge" id="holderAge">
+              <mat-hint align="end">Enter policy holder's age.</mat-hint>
+              <mat-error *ngIf="hasError('holderAge', 'required')">Policy Holder's Age is required</mat-error>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <mat-select [compareWith]="compGender" placeholder="Gender" formControlName="holderGender" id="holderGender">
+                <mat-option [value]="0">Male</mat-option>
+                <mat-option [value]="1">Female</mat-option>
+              </mat-select>
+              <mat-hint align="end">Enter policy holder's gender.</mat-hint>
+              <mat-error *ngIf="hasError('holderGender', 'required')">Policy Holder's Gender is required</mat-error>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="action-button-row" align="end">
+            <button mat-button type="submit" [disabled]="!policyForm.valid">Save</button>
+            <button mat-flat-button color="accent" (click)="cancel()">Cancel</button>
+          </div>
+        </mat-card-actions> 
+      </form>
+    </mat-card>
+  </section>
